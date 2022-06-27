@@ -1,0 +1,29 @@
+@use '@styles' as *;
+
+.input {
+    width: 100%;
+    max-width: 300px;
+    margin: 1rem auto;
+
+    &-label {
+        display: block;
+        font-size: $fz0;
+        margin-bottom: 0.5rem;
+    }
+    
+    &-field {
+        display: block;
+        font-size: $fz0;
+        width: 100%;
+        padding: .7rem;
+        background-color: $color-white;
+        border: 1px solid $color-black;
+        border-radius: .25rem;
+
+        &::placeholder {
+            font-size: $fz0;
+            color: $color-gray-dark;
+        }
+    }
+
+}
