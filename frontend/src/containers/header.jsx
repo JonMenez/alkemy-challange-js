@@ -1,9 +1,14 @@
-import React from 'react'
+import NavBar from '@components/NavBar'
+import Logo from '../components/logo'
 
-const header = () => {
+const Header = () => {
     return (
-        <div>header</div>
+        <div>
+            Header
+            <Logo />
+            <NavBar />
+        </div>
     )
 }
 
-export default header
+export default Header
