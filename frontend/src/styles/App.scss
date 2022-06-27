@@ -1,0 +1,52 @@
+@use 'colors' as *;
+@use 'font-sizes' as *;
+@use 'font-face' as *;
+  
+// Font family variables
+$font-primary: 'Outfit', sans-serif;
+$font-secondary: 'DM Sans', sans-serif;
+
+
+
+* {
+    box-sizing: border-box;
+    font-family: $font-primary;
+    padding: 0;
+    margin: 0;
+    color: $color-black;
+
+    img {
+      width: 100%;
+       }
+    
+    a {
+      text-decoration: none;
+      color: $color-black;
+      display: block;
+    }
+    
+    input, textarea {
+      -webkit-appearance: none;
+      appearance: none;
+      outline: none;
+    }
+
+    li {
+      list-style: none;
+    }
+
+    button {
+      cursor: pointer;
+    }
+
+  }
+
+  .app {
+    width: 100%;
+    max-width: 1440px;
+    margin: {
+      left: auto;
+      right: auto;
+  };
+    margin-inline: auto;
+  }
