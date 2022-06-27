@@ -1,0 +1,46 @@
+@use '@styles' as *;
+
+.login {
+    width: min(100% - 2rem, 40rem);
+    margin: 1rem auto;
+    
+    &-header{
+        display: flex;
+        align-items: center;
+        margin-bottom: 2.5rem;
+    }
+
+    &-title {
+        font-size: $fz3;
+        font-weight: 400;
+        margin-left: 1rem;
+        padding-bottom: .5rem;
+    }
+
+    &-button {
+        max-width: 300px;
+        margin: 1.5rem auto;
+    }
+
+    &-question {
+        display: block;
+        font-size: $fz-2;
+        text-align: center;
+        margin-top: 1rem;
+    }
+
+    &-sign-up {
+        display: inline-block;
+        color: $color-primary;
+        margin-left: 1rem;
+        cursor: pointer;
+    }
+
+    &-forgot {
+        text-align: center;
+        font-size: $fz-2;
+        color: $color-primary;
+        cursor: pointer;
+        margin-top: 2.8rem;
+    }
+}
