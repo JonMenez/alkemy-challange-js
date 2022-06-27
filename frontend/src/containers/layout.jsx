@@ -1,9 +1,9 @@
 import React from 'react'
 
-const layout = () => {
+const Layout = () => {
     return (
-        <div>layout</div>
+        <div>Layout</div>
     )
 }
 
-export default layout
+export default Layout
