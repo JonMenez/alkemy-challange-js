@@ -1,0 +1,13 @@
+@use '@styles' as *;
+
+.button {
+    display: block;
+    width: 100%;
+    font-size: $fz0;
+    border: none;
+    border-radius: .25rem;
+    color: $color-white;
+    background-color: $color-primary;
+    cursor: pointer;
+    padding: .8rem 1rem;
+}
