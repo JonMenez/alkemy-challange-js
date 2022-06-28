@@ -44,7 +44,7 @@ const LoginPage = () => {
                 />
                 <Button
                     classButton='login-button'
-                    title='Sign Up Now' />
+                    title='Login' />
             </form>
             <p className="login-question">Doesn't have an account?<span><a className="login-sign-up" href="#">Sign Up</a></span> </p>
             <a className="login-forgot" href="#">Forgot password?</a>
