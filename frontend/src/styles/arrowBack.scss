@@ -1,6 +1,20 @@
-
+@use '@styles' as *;
 
 .arrow-back {
     width: min(10%, 3rem);
     cursor: pointer;
+}
+
+@include md {
+    .arrow-back {
+        position: absolute;
+        top: 1rem;
+        left: 2rem;
+    }
+}
+
+@include lg {
+    .arrow-back {
+        display: none;
+    }
 }
