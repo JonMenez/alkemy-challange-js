@@ -3,11 +3,17 @@
 .button {
     display: block;
     width: 100%;
-    font-size: $fz0;
-    border: none;
+    font-size: $fz-1;
+    border: solid .5px darken($color-primary,10%);
     border-radius: .25rem;
+    box-shadow: 0px 1px 0px $color-gray;
     color: $color-white;
     background-color: $color-primary;
     cursor: pointer;
-    padding: .8rem 1rem;
+    padding: .6rem 1rem;
+    transition: background-color, transform 80ms cubic-bezier(0.33, 1, 0.68, 1);
+
+    &:hover {
+        background-color: darken($color-primary,5%);
+    }
 }

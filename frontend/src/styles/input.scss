@@ -7,21 +7,23 @@
 
     &-label {
         display: block;
-        font-size: $fz0;
+        font-size: $fz-1;
         margin-bottom: 0.5rem;
     }
     
     &-field {
         display: block;
-        font-size: $fz0;
+        font-size: $fz-1;
         width: 100%;
-        padding: .7rem;
+        padding: .5rem;
         background-color: $color-white;
-        border: 1px solid $color-black;
+        border: .5px solid $color-black;
         border-radius: .25rem;
+        box-shadow: 0px 1px opx $color-gray;
+
 
         &::placeholder {
-            font-size: $fz0;
+            font-size: $fz-1;
             color: $color-gray-dark;
         }
     }
