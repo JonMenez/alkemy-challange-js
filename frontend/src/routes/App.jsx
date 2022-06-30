@@ -1,11 +1,15 @@
-import LoginPage from "@pages/LoginPage"
+import { BrowserRouter } from 'react-router-dom';
+import AnimatePage from './AnimatePage';
 import '@styles/App.scss'
+
 
 function App() {
 
   return (
     <div className="App">
-      <LoginPage />
+      <BrowserRouter>
+        <AnimatePage />
+      </BrowserRouter>
     </div>
   )
 }
