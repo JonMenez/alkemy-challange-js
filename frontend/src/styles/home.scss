@@ -1,0 +1,32 @@
+@use '@styles' as *;
+
+.home {
+    margin-top: 2rem;
+
+    &-container {
+        width: 100%;
+        max-width: 500px;
+        margin: 0 auto;
+    }
+    &-list {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        width: calc( 100% - 1.5rem );
+        margin: 1rem auto;
+    }
+
+    &-list-title {
+        font-size: $fz1;
+        font-weight: 500;
+    }
+
+    &-list-title-link a {
+        color: $color-primary;
+        cursor: pointer;
+
+        &:hover {
+            text-decoration: underline;
+        }
+    }
+}

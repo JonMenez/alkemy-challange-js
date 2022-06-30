@@ -1,0 +1,25 @@
+@use '@styles' as *;
+@use 'font-face' as *;
+
+.cardTransaction {
+    border-bottom: 1px solid $color-black;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: .5rem;
+    margin-bottom: .5rem;
+
+    // &-info,
+    &-number {
+        font-family: $font-number;
+    }
+
+    &-span {
+        display: block;
+        font-size: $fz-2;
+        color: $color-gray-dark;
+    }
+
+    &-right {
+        text-align: right;
+    }
+}

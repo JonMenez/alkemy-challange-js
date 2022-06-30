@@ -1,0 +1,15 @@
+@use '@styles' as *;
+
+.transaction {
+    width: calc( 100% - 1.5rem);
+    max-width: 500px;
+    margin: 0 auto;
+
+    &-thead {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        font-size: $fz0;
+        font-weight: 500;
+    }
+}
