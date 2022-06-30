@@ -7,9 +7,7 @@ import '@styles/header.scss'
 const Header = () => {
     const [isOpen, setIsOpen] = useState(false)
 
-    const _handleClick = () => {
-        setIsOpen(true)
-    }
+    const _handleClick = () => setIsOpen(true)
 
     return (
         <header className='header'>
