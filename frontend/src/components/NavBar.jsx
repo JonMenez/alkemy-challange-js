@@ -11,7 +11,7 @@ const NavBar = ({ isOpen, setIsOpen }) => {
     }
 
     return (
-        <div className={`navBar ${show}`}>
+        <nav className={`navBar ${show}`}>
             <div className='navBar-logo'>
                 <h2 className="navBar-title">Moniger</h2>
                 <p className='navBar-text'>Track your activities</p>
@@ -38,7 +38,7 @@ const NavBar = ({ isOpen, setIsOpen }) => {
                 title='Log out'
                 classButton='navBar-button'
             />
-        </div>
+        </nav>
     )
 }
 
