@@ -30,8 +30,11 @@
     font-style: normal;
     font-weight: 400;
     src: local(''),
-         url('../fonts/dm-sans-v11-latin-regular.woff2') format('woff2'),
-         url('../fonts/dm-sans-v11-latin-regular.woff') format('woff'); 
+         url('@fonts/dm-sans-v11-latin-regular.woff2') format('woff2'),
+         url('@fonts/dm-sans-v11-latin-regular.woff') format('woff'); 
   }
+
+  $font-family-outfit: 'Outfit';
+  $font-number: 'DM Sans';
   
   
