@@ -1,8 +1,7 @@
 import { Routes, Route } from 'react-router-dom'
 import Layout from '@containers/Layout'
 import Home from '@pages/Home'
-import TransactionPage from '../pages/TransactionPage'
-// import Home from '@pages/index'
+import TransactionPage from '@pages/TransactionPage'
 
 const AnimatePage = () => {
     return (
