@@ -1,7 +1,7 @@
 import CardTransaction from '@components/CardTransaction'
 import '@styles/transaction.scss'
 
-const Transactions = () => {
+const Transactions = ({ children }) => {
     return (
         <section className='transaction'>
             <div className="transaction-thead">
@@ -9,8 +9,7 @@ const Transactions = () => {
                 <p className="transaction-title">Price</p>
             </div>
             <ul className="transaction-list">
-                <CardTransaction balance={100} />
-                <CardTransaction balance={100} />
+                {children}
             </ul>
         </section>
     )
