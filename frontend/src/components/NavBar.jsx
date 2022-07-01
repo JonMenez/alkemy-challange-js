@@ -1,3 +1,4 @@
+import { NavLink } from 'react-router-dom'
 import Button from '@components/Button';
 import exitSVG from '@icons/exit.svg';
 import '@styles/navBar.scss'
@@ -22,16 +23,16 @@ const NavBar = ({ isOpen, setIsOpen }) => {
             </div>
             <ul className="navBar-list">
                 <li className="navBar-list-item">
-                    <a className='navBar-list-link active' href="#">Home</a>
+                    <NavLink to='/' className='navBar-list-link active' href="#">Home</NavLink>
                 </li>
                 <li className="navBar-list-item">
-                    <a className='navBar-list-link' href="#">Profile</a>
+                    <NavLink to='/' className='navBar-list-link' href="#">Profile</NavLink>
                 </li>
                 <li className="navBar-list-item">
-                    <a className='navBar-list-link' href="#">About</a>
+                    <NavLink to='/' className='navBar-list-link' href="#">About</NavLink>
                 </li>
                 <li className="navBar-list-item">
-                    <a className='navBar-list-link' href="#">Contact</a>
+                    <NavLink to='/' className='navBar-list-link' href="#">Contact</NavLink>
                 </li>
             </ul>
             <Button
