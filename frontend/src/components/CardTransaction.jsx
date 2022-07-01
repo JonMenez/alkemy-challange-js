@@ -1,6 +1,6 @@
 import '@styles/cardTransaction.scss'
 
-const CardTransaction = ({ balance }) => {
+const CardTransaction = ({ description, balance, date, category }) => {
 
     const _formatBalance = (balance) => {
         if (balance < 0) {
@@ -9,15 +9,17 @@ const CardTransaction = ({ balance }) => {
         return `$${balance.toFixed(2)}`
     }
 
+    const operationType = balance < 0 ? 'expense' : 'income'
+
     return (
         <div className='cardTransaction'>
             <div className='cardTransaction-left'>
-                <p className="cardTransaction-info">Shoes</p>
-                <span className='cardTransaction-span'>13/03/2022</span>
+                <p className="cardTransaction-info">{description}</p>
+                <span className='cardTransaction-span'>{date}</span>
             </div>
             <div className='cardTransaction-right'>
-                <p className="cardTransaction-number">{_formatBalance(balance)}</p>
-                <span className='cardTransaction-span'>Shopping</span>
+                <p className={`cardTransaction-number ${operationType}`}>{_formatBalance(balance)}</p>
+                <span className='cardTransaction-span'>{category}</span>
             </div>
         </div>
     )
