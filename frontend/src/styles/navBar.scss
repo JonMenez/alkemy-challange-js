@@ -10,6 +10,7 @@
     top: 0;
     left: -100%;
     transition: all 250ms ease-in-out;
+    z-index: 2;
 
     &-logo {
         position: relative;
@@ -116,7 +117,7 @@
     
         &-list-link {
             color: $color-black;
-            font-size: $fz0;
+            font-size: $fz-1;
             padding: .5rem 1rem;
             transition: background-color 80ms cubic-bezier(0.33, 1, 0.68, 1);
     
@@ -131,7 +132,7 @@
             box-shadow: none;
             border: none;
             width: fit-content;
-            font-size: $fz0;
+            font-size: $fz-1;
             background-color: transparent;
             color: $color-black;
             margin: 0;
@@ -139,7 +140,7 @@
     
             &:hover {
                 background-color: #fff;
-                color: $color-red;
+                color: $color-expense;
             }
         }
     };
