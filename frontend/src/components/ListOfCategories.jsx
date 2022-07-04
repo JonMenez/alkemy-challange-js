@@ -2,7 +2,6 @@ import '@styles/listOfCategories.scss'
 
 const ListOfCategories = ({ handleSelect, className, placeholder, operationType, defaultvalue = '' }) => {
 
-    console.log(operationType.toLowerCase())
     const categories = [{
         name: 'Show All',
         value: '',
