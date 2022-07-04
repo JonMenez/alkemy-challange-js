@@ -1,0 +1,10 @@
+@use '@styles' as *;
+
+.filter-select {
+    width: calc(40% - 1rem);
+    padding: .5rem ;
+    border-radius: .25rem;
+    border: 1px solid $color-black;
+    background-color: $color-white;
+    font-size: $fz-1;
+}
