@@ -16,7 +16,7 @@ const CardTransaction = ({ description, balance, date, category }) => {
         setIsOpen(true)
     }
 
-    const operationType = balance < 0 ? 'Expense' : 'Income'
+    const operationType = balance < 0 ? 'Expenses' : 'Incomes'
 
     return (
         <>
