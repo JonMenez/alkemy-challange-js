@@ -3,6 +3,7 @@ import Transactions from '@containers/Transactions'
 import CardTransaction from '@components/CardTransaction'
 
 import '@styles/transactionPage.scss'
+import ListOfCategories from '../components/listOfCategories'
 
 const TransactionPage = () => {
     const [selected, setSelected] = useState({
@@ -37,20 +38,18 @@ const TransactionPage = () => {
         }
     ]
 
-    const _handleClass = (className) => {
+    const _handleClass = (className) => () => {
         setSelected({
             class: className,
             query: ''
         })
     }
 
-    const _handleSelect = (e) => {
-        console.log(e.target)
+    const _handleSelect = (e) => () => {
         setSelected({
             class: 'all',
             query: e.target.value
         })
-
     }
 
     return (
@@ -58,35 +57,30 @@ const TransactionPage = () => {
             <ul className="transactionPage-list">
                 <li
                     className={`transactionPage-list-item ${selected.class === 'all' ? 'all' : ''}`}
-                    onClick={() => _handleClass('all')}
+                    onClick={_handleClass('all')}
                 >
                     All
                 </li>
                 <li
                     className={`transactionPage-list-item ${selected.class === 'incomes' ? 'incomes' : ''}`}
-                    onClick={() => _handleClass('incomes')}
+                    onClick={_handleClass('incomes')}
                 >
                     Incomes
                 </li>
                 <li
                     className={`transactionPage-list-item ${selected.class === 'expenses' ? 'expenses' : ''}`}
-                    onClick={() => _handleClass('expenses')}
+                    onClick={_handleClass('expenses')}
                 >
                     Expenses
                 </li>
             </ul>
             <div className="transactionPage-filter">
                 <h2 className="transactionPage-filter-title">All transactions</h2>
-                <select name='filter' defaultValue={''} className="transactionPage-filter-select">
-                    <option onClick={_handleSelect} value='' disabled hidden>Filter by</option>
-                    <option onClick={_handleSelect} value="show">Show all</option>
-                    <option onClick={_handleSelect} value="Deposit">Deposit</option>
-                    <option onClick={_handleSelect} value="Food">Food</option>
-                    <option onClick={_handleSelect} value="Restaurant">Restaurant</option>
-                    <option onClick={_handleSelect} value="Transport">Transport</option>
-                    <option onClick={_handleSelect} value="Shopping">Shopping</option>
-                    <option onClick={_handleSelect} value="Withdraw">Withdraw</option>
-                </select>
+                <ListOfCategories
+                    handleSelect={_handleSelect}
+                    placeholder="Filter by"
+                    operationType={selected.class}
+                />
             </div>
             <Transactions>
                 {purchases
