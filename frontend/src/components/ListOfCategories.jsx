@@ -2,6 +2,7 @@ import '@styles/listOfCategories.scss'
 
 const ListOfCategories = ({ handleSelect, className, placeholder, operationType, defaultvalue = '' }) => {
 
+    console.log(operationType.toLowerCase())
     const categories = [{
         name: 'Show All',
         value: '',
@@ -45,7 +46,7 @@ const ListOfCategories = ({ handleSelect, className, placeholder, operationType,
                 if (operationType === 'all') {
                     return true
                 }
-                return type === operationType
+                return type === operationType.toLowerCase()
             })
                 .map(category => (
                     <option key={category.value} onClick={handleSelect} value={category.value}>{category.name}</option>
