@@ -74,7 +74,7 @@ const CardTransactionModal = ({ description, balance, date, category, setIsOpen,
                                     defaultvalue={cardInfo.category}
                                     // handleSelect={_handleSelect}
                                     placeholder="Select"
-                                    operationType={'all'}
+                                    operationType={operationType}
                                 />
                                 :
                                 <p>{cardInfo.category}</p>
