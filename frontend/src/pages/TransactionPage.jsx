@@ -13,14 +13,14 @@ const TransactionPage = () => {
 
     const purchases = [
         {
-            description: 'Restaurant',
+            description: 'Lunch',
             balance: -100,
             date: '2020-01-01',
             category: 'Food'
         },
         {
             description: 'Shoes',
-            balance: -50,
+            balance: -25,
             date: '2020-01-01',
             category: 'Restaurant'
         },
@@ -45,7 +45,7 @@ const TransactionPage = () => {
         })
     }
 
-    const _handleSelect = (e) => () => {
+    const _handleSelect = (e) => {
         setSelected({
             class: 'all',
             query: e.target.value
