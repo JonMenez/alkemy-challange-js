@@ -1,16 +1,12 @@
-import CardTransactionModal from '@components/CardTransactionModal'
-import '@styles/cardTransaction.scss'
 import { useState } from 'react'
+import CardTransactionModal from '@components/CardTransactionModal'
+import { _formatBalance } from '../helpers/formatters'
+import '@styles/cardTransaction.scss'
 
-const CardTransaction = ({ description, balance, date, category }) => {
+const CardTransaction = ({ description, balance, date, category, setTransactions }) => {
     const [isOpen, setIsOpen] = useState(false)
 
-    const _formatBalance = (balance) => {
-        if (balance < 0) {
-            return `- $${Math.abs(balance).toFixed(2)}`
-        }
-        return `$${balance.toFixed(2)}`
-    }
+    const formatedBalance = _formatBalance(balance)
 
     const _handleClick = () => {
         setIsOpen(true)
@@ -28,17 +24,18 @@ const CardTransaction = ({ description, balance, date, category }) => {
                     <span className='cardTransaction-span'>{date}</span>
                 </div>
                 <div className='cardTransaction-right'>
-                    <p className={`cardTransaction-number ${operationType}`}>{_formatBalance(balance)}</p>
+                    <p className={`cardTransaction-number ${operationType}`}>{formatedBalance}</p>
                     <span className='cardTransaction-span'>{category}</span>
                 </div>
             </div>
             {
                 isOpen && <CardTransactionModal
                     description={description}
-                    balance={_formatBalance(balance)}
+                    balance={balance}
                     date={date}
                     category={category}
                     setIsOpen={setIsOpen}
+                    setTransactions={setTransactions}
                     operationType={operationType}
                 />
             }
