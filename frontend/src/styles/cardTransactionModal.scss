@@ -90,7 +90,8 @@
     }
     
     &-editMode {
-        width: 40%;
+        width: 50%;
+        max-width: 130px;
         font-size: $fz-1;
         background-color: $color-white;
         border: 1px solid $color-gray-dark;
@@ -113,9 +114,6 @@
             background-color: $color-white;
             transition: background-color .2s ease-in-out;
             
-            &:hover {
-                background-color: $color-gray;
-            }
         }
         
         img {
@@ -127,13 +125,13 @@
 }
 
 select.modal-input-list {
-        width: 40%;
+        width: 50%;
+        max-width: 130px;
         font-size: $fz-1;
         background-color: $color-white;
         border: 1px solid $color-gray-dark;
         border-radius: .25rem;
         padding: .05rem .5rem;
-
 }
 
 .editColor {
@@ -142,4 +140,10 @@ select.modal-input-list {
 
 .deleteColor {
     color: $color-expense;
+}
+
+@include lg {
+    .modal-button button:hover {
+            background-color: $color-gray;
+    }
 }
