@@ -1,12 +1,10 @@
 
 export const _formatBalance = (balance) => {
-    if (isNaN(balance)) {
-        return '-';
+    const number = Number(balance);
+    if (number < 0) {
+        return `- $${Math.abs(number).toFixed(2)}`
     }
-    if (balance < 0) {
-        return `- $${Math.abs(balance).toFixed(2)}`
-    }
-    return `$${balance.toFixed(2)}`
+    return `$${number.toFixed(2)}`
 }
 
 
