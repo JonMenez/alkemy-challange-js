@@ -1,6 +1,6 @@
 import '@styles/listOfCategories.scss'
 
-const ListOfCategories = ({ handleSelect, className, placeholder, operationType, defaultvalue = '' }) => {
+const ListOfCategories = ({ handleSelect, handleChange, className, name, placeholder, operationType, defaultvalue = '' }) => {
 
     const categories = [{
         name: 'Show All',
@@ -39,16 +39,31 @@ const ListOfCategories = ({ handleSelect, className, placeholder, operationType,
     }]
 
     return (
-        <select name='filter' defaultValue={defaultvalue} className={`filter-select ${className}`}>
-            <option onClick={handleSelect} value='' disabled hidden>{placeholder}</option>
-            {categories.filter(({ type }) => {
-                if (operationType === 'all') {
-                    return true
-                }
-                return type === operationType.toLowerCase()
-            })
+        <select
+            name={name}
+            onChange={handleChange}
+            defaultValue={defaultvalue}
+            className={`filter-select ${className}`}
+        >
+            <option
+                onClick={handleSelect}
+                value=''
+                disabled
+                hidden
+            >{placeholder}
+            </option>
+            {categories
+                .filter(({ type }) => {
+                    if (operationType === 'all') {
+                        return true
+                    }
+                    return type === operationType.toLowerCase()
+                })
                 .map(category => (
-                    <option key={category.value} onClick={handleSelect} value={category.value}>{category.name}</option>
+                    <option
+                        key={category.value}
+                        onClick={handleSelect}
+                        value={category.value}>{category.name}</option>
                 ))}
         </select>
     )
