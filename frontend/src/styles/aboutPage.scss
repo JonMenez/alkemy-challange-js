@@ -1,0 +1,23 @@
+@use '@styles' as *;
+
+.about {
+    width: calc(100% - 2rem);
+    margin: 0 auto;
+
+    &-title {
+        text-align: center;
+        margin: 1rem 0;
+    }
+
+    &-img {
+        width: 80%;
+        margin: 1rem auto;
+        outline: solid;
+    }
+
+    &-text {
+        width: 60ch;
+        margin: 1rem auto;
+        margin: 1rem auto;
+    }
+}
