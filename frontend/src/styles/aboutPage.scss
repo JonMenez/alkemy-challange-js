@@ -3,21 +3,24 @@
 .about {
     width: calc(100% - 2rem);
     margin: 0 auto;
+    max-width: 600px;
 
     &-title {
         text-align: center;
         margin: 1rem 0;
+        font-size: $fz2;
     }
 
     &-img {
         width: 80%;
+        height: 5rem;
         margin: 1rem auto;
         outline: solid;
     }
 
     &-text {
         width: 60ch;
-        margin: 1rem auto;
+        font-size: $fz-1;
         margin: 1rem auto;
     }
 }
