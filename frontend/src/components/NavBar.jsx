@@ -23,16 +23,16 @@ const NavBar = ({ isOpen, setIsOpen }) => {
             </div>
             <ul className="navBar-list">
                 <li className="navBar-list-item">
-                    <NavLink to='/' className='navBar-list-link active' href="#">Home</NavLink>
+                    <NavLink onClick={_handleClick} to='/' className='navBar-list-link' href="#">Home</NavLink>
                 </li>
                 <li className="navBar-list-item">
-                    <NavLink to='/' className='navBar-list-link' href="#">Profile</NavLink>
+                    <NavLink onClick={_handleClick} to='transactions' className='navBar-list-link' href="#">Transactions</NavLink>
                 </li>
                 <li className="navBar-list-item">
-                    <NavLink to='/' className='navBar-list-link' href="#">About</NavLink>
+                    <NavLink onClick={_handleClick} to='about' className='navBar-list-link' href="#">About</NavLink>
                 </li>
                 <li className="navBar-list-item">
-                    <NavLink to='/' className='navBar-list-link' href="#">Contact</NavLink>
+                    <NavLink onClick={_handleClick} to='contact' className='navBar-list-link' href="#">Contact</NavLink>
                 </li>
             </ul>
             <Button
