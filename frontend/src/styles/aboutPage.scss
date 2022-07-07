@@ -11,16 +11,40 @@
         font-size: $fz2;
     }
 
+    &-subtitle {
+        text-align: center;
+        margin: 1rem 0;
+        font-size: $fz0;
+    }
+
     &-img {
-        width: 80%;
-        height: 5rem;
+        width: 100%;
+        max-width: 500px;
         margin: 1rem auto;
-        outline: solid;
+        border-radius: .5rem;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+            display: block;
+        }
     }
 
     &-text {
-        width: 60ch;
         font-size: $fz-1;
-        margin: 1rem auto;
+    }
+
+    &-brand {
+        color: $color-secondary;
+    }
+
+    &-emphasis {
+        text-decoration: underline;
+    }
+}
+
+@include lg {
+    .about-text {
+        text-align: center;
     }
 }
