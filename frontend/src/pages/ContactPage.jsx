@@ -6,9 +6,7 @@ const ContactPage = () => {
         <div className='contact'>
             <h1 className='contact-title'>We're happy to know what you think!</h1>
             <p className='contact-text'>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                Donec euismod, nisl eget consectetur sagittis, nisl nunc
-                consectetur nisi, euismod aliquam nisl nunc euismod nisi.
+                Hi, we are interested in hearing your opinion about the site, please feel free to leave your feedback.
             </p>
             <form className='contact-form' action="">
                 <label htmlFor="contact" className="contact-label">Let us a comment:</label>
