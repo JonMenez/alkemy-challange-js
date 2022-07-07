@@ -10,8 +10,7 @@ const TransactionPage = () => {
         class: 'all',
         query: ''
     })
-
-    const purchases = [
+    const [transactions, setTransactions] = useState([
         {
             description: 'Lunch',
             balance: -100,
@@ -36,7 +35,7 @@ const TransactionPage = () => {
             date: '2020-01-01',
             category: 'Deposit'
         }
-    ]
+    ])
 
     const _handleClass = (className) => () => {
         setSelected({
@@ -83,16 +82,19 @@ const TransactionPage = () => {
                 />
             </div>
             <Transactions>
-                {purchases
-                    .filter(({ balance }) => {
+                {transactions
+                    .filter(transaction => {
                         if (selected.class === 'all') {
                             return true
                         }
                         if (selected.class === 'incomes') {
-                            return balance > 0
+                            return transaction.balance > 0
                         }
-                        return balance < 0
-                    })
+                        if (selected.class === 'expenses') {
+                            return transaction.balance < 0
+                        }
+                    }
+                    )
                     .filter(({ category }) => {
                         if (selected.query === '') {
                             return true
@@ -106,6 +108,7 @@ const TransactionPage = () => {
                             balance={balance}
                             date={date}
                             category={category}
+                            setTransactions={setTransactions}
                             key={index} />
                     ))}
             </Transactions>
