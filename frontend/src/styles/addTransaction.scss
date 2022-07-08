@@ -1,0 +1,23 @@
+@use '@styles' as *;
+
+//Modal 
+.addTransaction{
+    outline: solid;
+    &-title {
+        margin-top: 1rem;
+    }
+
+    &-form-select {
+    }
+
+    &-form-container {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    &-label {
+        text-align: left;
+    }
+}
