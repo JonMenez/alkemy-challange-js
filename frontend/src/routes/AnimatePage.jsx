@@ -3,7 +3,7 @@ import Layout from '@containers/Layout'
 import Home from '@pages/Home'
 import TransactionPage from '@pages/TransactionPage'
 import AboutPage from '@pages/AboutPage'
-import ContactPage from '../pages/ContactPage'
+import ContactPage from '@pages/ContactPage'
 
 const AnimatePage = () => {
     return (
