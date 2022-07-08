@@ -5,15 +5,35 @@
     &-filter {
         width: calc(100% - 1rem);
         max-width: 500px;
-        display: flex;
-        justify-content: space-between;
         align-items: baseline;
         margin: 2rem auto;
     }
 
+    &-filter-title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    &-filter-container {
+        display: flex;
+        justify-content: space-between;
+        width: 80%;
+        margin: 0 auto;
+    }
+
+    &-button {
+        width: calc(40% - 1rem);
+        padding: .5rem;
+        border-radius: .25rem;
+        border: 1px solid $color-black;
+        background-color: $color-primary;
+        font-size: $fz2;
+        padding: 0 .8rem;
+    }
+
     &-filter-select {
         width: calc(40% - 1rem);
-        padding: .5rem ;
+        padding: .3rem ;
         border-radius: .25rem;
         border: 1px solid $color-black;
         background-color: $color-white;
@@ -53,6 +73,8 @@
     }
 }
 
+
+//type of transaction navigation
 .all {
     color: $color-primary;
     background-color: #fff;
