@@ -1,14 +1,17 @@
 import { useState } from 'react'
 import Transactions from '@containers/Transactions'
 import CardTransaction from '@components/CardTransaction'
-
+import Button from '@components/Button'
+import ListOfCategories from '@components/listOfCategories'
+import Modal from '@containers/Modal'
+import Addtransaction from '@containers/Addtransaction'
 import '@styles/transactionPage.scss'
-import ListOfCategories from '../components/listOfCategories'
 
 const TransactionPage = () => {
     const [selected, setSelected] = useState({
         class: 'all',
-        query: ''
+        query: '',
+        addTrasaction: false,
     })
     const [transactions, setTransactions] = useState([
         {
@@ -51,6 +54,13 @@ const TransactionPage = () => {
         })
     }
 
+    const _handleAddTransaction = (state) => () => {
+        setSelected({
+            ...selected,
+            addTrasaction: state
+        })
+    }
+
     return (
         <main className='transactionPage'>
             <ul className="transactionPage-list">
@@ -75,11 +85,18 @@ const TransactionPage = () => {
             </ul>
             <div className="transactionPage-filter">
                 <h2 className="transactionPage-filter-title">All transactions</h2>
-                <ListOfCategories
-                    handleSelect={_handleSelect}
-                    placeholder="Filter by"
-                    operationType={selected.class}
-                />
+                <div className="transactionPage-filter-container">
+                    <ListOfCategories
+                        handleSelect={_handleSelect}
+                        placeholder="Filter by"
+                        operationType={selected.class}
+                    />
+                    <Button
+                        onClick={_handleAddTransaction(true)}
+                        title='+'
+                        classButton='transactionPage-button'
+                    />
+                </div>
             </div>
             <Transactions>
                 {transactions
@@ -112,6 +129,11 @@ const TransactionPage = () => {
                             key={index} />
                     ))}
             </Transactions>
+            {selected.addTrasaction
+                &&
+                (<Modal onClose={_handleAddTransaction(false)}>
+                    <Addtransaction onClose={_handleAddTransaction(false)} />
+                </Modal>)}
         </main>
     )
 }
