@@ -1,8 +1,13 @@
 import '@styles/button.scss'
 
-const Button = ({ title, classButton }) => {
+const Button = ({ title, classButton, type, onClick }) => {
     return (
-        <button className={`button ${classButton}`}>{title}</button>
+        <button
+            type={type}
+            onClick={onClick}
+            className={`button ${classButton}`}>
+            {title}
+        </button>
     )
 }
 
