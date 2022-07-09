@@ -1,12 +1,12 @@
 import exitSVG from '@icons/exit.svg'
 import '@styles/modal.scss'
 
-const Modal = ({ children }, handleExit) => {
+const Modal = ({ children, onClose }) => {
     return (
         <div className='backdrop'>
             <div className="modal">
-                <div onClick={handleExit} className="modal-exit">
-                    <img src={exitSVG} alt="" />
+                <div onClick={onClose} className="modal-exit">
+                    <img src={exitSVG} alt="exit icon" />
                 </div>
                 {children}
             </div>
