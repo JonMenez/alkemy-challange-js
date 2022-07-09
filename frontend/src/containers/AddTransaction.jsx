@@ -1,17 +1,19 @@
 import Input from '@components/Input'
+import Button from '@components/Button'
 import ListOfCategories from '@components/listOfCategories'
 import '@styles/addTransaction.scss'
 
-const Addtransaction = () => {
+const Addtransaction = ({ onClose }) => {
     return (
-        <div className='addTracsaction'>
+        <form className='addTransaction'>
             <h2 className='addTransaction-title'>New transaction</h2>
             <div className="addTransaction-form">
                 <Input
                     name='decription'
                     title='Description'
-                    classLabel='addTransaction-label'
-                    classInput=''
+                    classContainer='addTransaction-form-description'
+                    classLabel='addTransaction-form-label'
+                    classInput='addTransaction-form-description-input'
                     type='text'
                     placeholder='Enter details of transaction'
                 />
@@ -19,20 +21,21 @@ const Addtransaction = () => {
                     <Input
                         name='amount'
                         title='Amount'
-                        classLabel='addTransaction-label'
-                        classInput=''
+                        classContainer='addTransaction-form-component'
+                        classLabel='addTransaction-form-label'
+                        classInput='addTransaction-form-input'
                         type='number'
                         placeholder='Enter amount'
                     />
-                    <div className='addTransaction-form-select'>
+                    <div className='addTransaction-form-component'>
                         <label
-                            className='addTransaction-label'
+                            className='addTransaction-form-label'
                             htmlFor="operationType">
                             Select type
                         </label>
                         <select
                             name='operationType'
-                            className="addTransaction-form"
+                            className="addTransaction-form-input"
                             defaultValue={''}>
                             <option
                                 value=''
@@ -48,14 +51,15 @@ const Addtransaction = () => {
                     <Input
                         name='Date'
                         title='Date'
-                        classLabel='addTransaction-label'
-                        classInput=''
+                        classContainer='addTransaction-form-component'
+                        classLabel='addTransaction-form-label'
+                        classInput='addTransaction-form-input'
                         type='date'
                         placeholder='Select date'
                     />
-                    <div className='addTransaction-form-select'>
+                    <div className='addTransaction-form-component'>
                         <label
-                            className='addTransaction-label'
+                            className='addTransaction-form-label'
                             htmlFor="category">
                             Select category
                         </label>
@@ -63,11 +67,23 @@ const Addtransaction = () => {
                             operationType='all'
                             placeholder='Category'
                             name='category'
+                            className='addTransaction-form-input'
                         />
                     </div>
                 </div>
             </div>
-        </div>
+            <Button
+                type='submit'
+                title="Add transaction"
+                classButton='addTransaction-button'
+            />
+            <Button
+                onClick={onClose}
+                type='button'
+                title="Cancel"
+                classButton='addTransaction-button-cancel'
+            />
+        </form>
     )
 }
 
