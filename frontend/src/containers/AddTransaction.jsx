@@ -2,14 +2,44 @@ import Input from '@components/Input'
 import Button from '@components/Button'
 import ListOfCategories from '@components/listOfCategories'
 import '@styles/addTransaction.scss'
+import { useRef, useState } from 'react'
 
 const Addtransaction = ({ onClose }) => {
+    const [operationType, setOperationType] = useState('all')
+
+
+    const form = useRef(null)
+
+    const handleCategoryChange = (e) => {
+        setOperationType(e.target.value)
+    }
+
+    const _handleSubmit = (e) => {
+        e.preventDefault()
+        const formData = new FormData(form.current)
+        let number = parseInt(formData.get('amount'))
+        if (operationType === 'expenses') {
+            number = number * -1
+        }
+        const data = {
+            description: formData.get('description'),
+            amount: number,
+            date: formData.get('date'),
+            operationType: operationType,
+            category: formData.get('category'),
+        }
+        console.log(data)
+        // onClose()
+    }
+
+    console.log(operationType)
+
     return (
-        <form className='addTransaction'>
+        <form onSubmit={_handleSubmit} ref={form} className='addTransaction'>
             <h2 className='addTransaction-title'>New transaction</h2>
             <div className="addTransaction-form">
                 <Input
-                    name='decription'
+                    name='description'
                     title='Description'
                     classContainer='addTransaction-form-description'
                     classLabel='addTransaction-form-label'
@@ -28,28 +58,25 @@ const Addtransaction = ({ onClose }) => {
                         placeholder='Enter amount'
                     />
                     <div className='addTransaction-form-component'>
-                        <label
-                            className='addTransaction-form-label'
-                            htmlFor="operationType">
-                            Select type
-                        </label>
                         <select
+                            onChange={handleCategoryChange}
                             name='operationType'
                             className="addTransaction-form-input"
-                            defaultValue={''}>
+                            defaultValue={''}
+                        >
                             <option
                                 value=''
                                 disabled
                                 hidden
                             >Select type</option>
-                            <option value="income">Income</option>
-                            <option value="expence">Expense</option>
+                            <option value="incomes">Incomes</option>
+                            <option value="expenses">Expenses</option>
                         </select>
                     </div>
                 </div>
                 <div className="addTransaction-form-container">
                     <Input
-                        name='Date'
+                        name='date'
                         title='Date'
                         classContainer='addTransaction-form-component'
                         classLabel='addTransaction-form-label'
@@ -58,23 +85,22 @@ const Addtransaction = ({ onClose }) => {
                         placeholder='Select date'
                     />
                     <div className='addTransaction-form-component'>
-                        <label
-                            className='addTransaction-form-label'
-                            htmlFor="category">
-                            Select category
-                        </label>
-                        <ListOfCategories
-                            operationType='all'
-                            placeholder='Category'
-                            name='category'
-                            className='addTransaction-form-input'
-                        />
+                        {
+                            operationType !== 'all'
+                            &&
+                            <ListOfCategories
+                                operationType={operationType}
+                                placeholder='Category'
+                                name='category'
+                                className='addTransaction-form-input'
+                            />
+                        }
                     </div>
                 </div>
             </div>
             <Button
                 type='submit'
-                title="Add transaction"
+                title="Add"
                 classButton='addTransaction-button'
             />
             <Button
@@ -83,7 +109,7 @@ const Addtransaction = ({ onClose }) => {
                 title="Cancel"
                 classButton='addTransaction-button-cancel'
             />
-        </form>
+        </form >
     )
 }
 
