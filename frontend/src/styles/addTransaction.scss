@@ -24,7 +24,7 @@
     &-form-container {
         display: flex;
         justify-content: center;
-        align-items: center;
+        align-items: flex-end;
         padding: 0;
         margin-bottom: 1rem;
     }
@@ -32,7 +32,6 @@
     &-form-component {
         width: 40%;
         margin: 0 auto;
-        justify-content: space-between;
         text-align: center;
     }
 
@@ -47,9 +46,9 @@
         display: block;
         font-size: $fz-1;
         width: 100%;
-        padding: .5rem;
         background-color: $color-white;
         border: .5px solid $color-black;
+        padding: .5rem;
         border-radius: .25rem;
         box-shadow: 0px 1px opx $color-gray;
     }
@@ -76,5 +75,4 @@
             background-color: darken($color-white, 5%);
         }
     }
-
 }
