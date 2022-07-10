@@ -1,6 +1,6 @@
 import '@styles/input.scss'
 
-const Input = ({ name, title, classLabel, classInput, classContainer, type, placeholder }) => {
+const Input = ({ name, title, classLabel, classInput, classContainer, type, placeholder, pattern }) => {
     return (
         <div className={`input ${classContainer}`}>
             <label htmlFor={name} className={`input-label ${classLabel}`}>{title}</label>
@@ -10,6 +10,8 @@ const Input = ({ name, title, classLabel, classInput, classContainer, type, plac
                 name={name}
                 type={type}
                 placeholder={placeholder}
+                pattern={pattern}
+                required
             />
         </div>
     )
