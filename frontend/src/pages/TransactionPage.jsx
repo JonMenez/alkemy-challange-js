@@ -13,6 +13,7 @@ const TransactionPage = () => {
         query: '',
         addTrasaction: false,
     })
+
     const [transactions, setTransactions] = useState([
         {
             description: 'Lunch',
@@ -49,7 +50,7 @@ const TransactionPage = () => {
 
     const _handleSelect = (e) => {
         setSelected({
-            class: 'all',
+            class: selected.class,
             query: e.target.value
         })
     }
@@ -87,7 +88,7 @@ const TransactionPage = () => {
                 <h2 className="transactionPage-filter-title">All transactions</h2>
                 <div className="transactionPage-filter-container">
                     <ListOfCategories
-                        handleSelect={_handleSelect}
+                        handleChange={_handleSelect}
                         placeholder="Filter by"
                         operationType={selected.class}
                     />
@@ -99,35 +100,41 @@ const TransactionPage = () => {
                 </div>
             </div>
             <Transactions>
-                {transactions
-                    .filter(transaction => {
-                        if (selected.class === 'all') {
-                            return true
-                        }
-                        if (selected.class === 'incomes') {
-                            return transaction.balance > 0
-                        }
-                        if (selected.class === 'expenses') {
-                            return transaction.balance < 0
-                        }
-                    }
-                    )
-                    .filter(({ category }) => {
-                        if (selected.query === '') {
-                            return true
-                        }
-                        return category.includes(selected.query)
-                    }
-                    )
-                    .map(({ description, balance, date, category }, index) => (
-                        <CardTransaction
-                            description={description}
-                            balance={balance}
-                            date={date}
-                            category={category}
-                            setTransactions={setTransactions}
-                            key={index} />
-                    ))}
+                {
+                    transactions.length == 0
+                        ? <div>No transaction has been found, you can start by pressing the "+" button.</div>
+                        :
+                        transactions
+                            .filter(transaction => {
+                                if (selected.class === 'all') {
+                                    return true
+                                }
+                                if (selected.class === 'incomes') {
+                                    return transaction.balance > 0
+                                }
+                                if (selected.class === 'expenses') {
+                                    return transaction.balance < 0
+                                }
+                            }
+                            )
+                            .filter(({ category }) => {
+                                if (selected.query === '') {
+                                    return true
+                                }
+                                return category.includes(selected.query)
+                            }
+                            )
+                            .map(({ description, balance, date, category }, transactions, index) => (
+                                <>
+                                    <CardTransaction
+                                        description={description}
+                                        balance={balance}
+                                        date={date}
+                                        category={category}
+                                        setTransactions={setTransactions}
+                                        key={index} />
+                                </>
+                            ))}
             </Transactions>
             {selected.addTrasaction
                 &&
