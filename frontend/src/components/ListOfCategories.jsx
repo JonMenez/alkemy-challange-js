@@ -62,7 +62,6 @@ const ListOfCategories = ({ handleSelect, handleChange, className, name, placeho
                 .map(category => (
                     <option
                         key={category.value}
-                        onClick={handleSelect}
                         value={category.value}>{category.name}</option>
                 ))}
         </select>
