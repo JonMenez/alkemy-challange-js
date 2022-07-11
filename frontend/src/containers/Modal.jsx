@@ -3,9 +3,13 @@ import '@styles/modal.scss'
 
 const Modal = ({ children, onClose }) => {
     return (
-        <div className='backdrop'>
+        <div
+            onClick={onClose}
+            className='backdrop'>
             <div className="modal">
-                <div onClick={onClose} className="modal-exit">
+                <div
+                    onClick={onClose}
+                    className="modal-exit">
                     <img src={exitSVG} alt="exit icon" />
                 </div>
                 {children}
