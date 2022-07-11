@@ -1,6 +1,7 @@
 @use '@styles'  as *;
 
 .backdrop {
+    backdrop-filter: blur(5px);
     cursor: auto;
     display: flex;
     align-items: center;
