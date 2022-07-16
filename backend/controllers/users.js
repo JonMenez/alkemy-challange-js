@@ -1,12 +1,17 @@
-const { restart } = require("nodemon")
+const User = require('../models/user');
 
 
-const getUsers = (req, res) => {
+const getUsers = async (req, res) => {
 
-
-    restart.json({
-        mgs: 'users GET'
-    })
+    try {
+        const users = await User.findAll();
+        res.json(users);
+    } catch (error) {
+        res.status(500).json({
+            msg: 'Error',
+            error
+        });
+    }
 }
 
 const getUserById = (req, res) => {
