@@ -1,5 +1,7 @@
 const express = require('express');
 const usersRoutes = require('../routes/users');
+const cors = require('cors');
+const db = require('../database/connection');
 
 
 class Server {
@@ -10,7 +12,27 @@ class Server {
             users: '/api/v1/users'
         }
 
+        this.connectDB()
+        this.middlewares()
         this.routes()
+    }
+
+    async connectDB() {
+        try {
+            await db.authenticate();
+            console.log('Database connected');
+        } catch (error) {
+            throw new Error(error);
+        }
+    }
+
+    middlewares() {
+        //CORS
+        this.app.use(cors())
+        //Static files
+        this.app.use(express.static('public'));
+        //Body parser
+        this.app.use(express.json());
     }
 
     routes() {
