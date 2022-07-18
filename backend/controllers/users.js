@@ -14,16 +14,44 @@ const getUsers = async (req, res) => {
     }
 }
 
-const getUserById = (req, res) => {
-    restart.json({
-        mgs: 'users GET id'
-    })
+const getUserById = async (req, res) => {
+
+    const { id } = req.params;
+
+    try {
+
+        const user = await User.findByPk(id);
+
+        res.json(user);
+
+    } catch (error) {
+        res.status(500).json({
+            msg: 'Error',
+            error
+        });
+    }
 }
 
-const createUser = (req, res) => {
-    restart.json({
-        mgs: 'users POST'
-    })
+const createUser = async (req, res) => {
+    const { name, email, password } = req.body;
+    console.log('body: ', req.body);
+    try {
+
+        const user = await User.create({
+            name,
+            email,
+            password
+        });
+
+        res.json(user);
+
+    } catch (error) {
+
+        res.status(500).json({
+            msg: 'Error',
+            error
+        });
+    }
 }
 
 const updateUser = (req, res) => {
