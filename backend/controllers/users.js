@@ -1,92 +1,52 @@
+const bcryptjs = require('bcryptjs');
 const User = require('../models/user');
 
 
 const getUsers = async (req, res) => {
-    try {
 
-        const users = await User.findAll({
-            attributes: ['id', 'name', 'email'],
-            where: {
-                status: true
-            },
-            order: [
-                ['id', 'ASC']
-            ]
-        });
-        const total = await User.count()
+    const users = await User.findAll({
+        attributes: ['id', 'name', 'email'],
+        where: {
+            status: true
+        },
+        order: [
+            ['id', 'ASC']
+        ]
+    });
 
-        res.json({
-            total,
-            users
-        });
+    const total = await User.count()
 
-    } catch (error) {
-
-        res.status(500).json({
-            msg: 'Error',
-            error
-        });
-
-    }
+    res.json({
+        total,
+        users
+    });
 }
 
 const getUserById = async (req, res) => {
 
     const { id } = req.params;
+    const user = await User.findByPk(id);
 
-    try {
+    res.json(user);
 
-        const user = await User.findByPk(id);
-
-        if (!user) {
-            return res.status(404).json({
-                msg: 'User not found'
-            });
-        } else {
-            res.json(user);
-        }
-    } catch (error) {
-        res.status(500).json({
-            msg: 'Error',
-            error
-        });
-    }
 }
 
 const createUser = async (req, res) => {
 
     const { name, email, password } = req.body;
 
-    try {
-        const isExistUser = await User.findOne({
-            where: {
-                email
-            }
-        });
+    const user = new User({
+        name,
+        email,
+        password: await bcryptjs.hash(password, 10)
+    });
 
-        if (isExistUser) {
-            return res.status(400).json({
-                msg: 'User already exists'
-            });
-        }
+    await user.save();
 
-        const user = await User.create({
-            name,
-            email,
-            password
-        });
-
-        res.json({
-            msg: 'User created',
-            user
-        });
-
-    } catch (error) {
-        res.status(500).json({
-            msg: 'Error',
-            error
-        });
-    }
+    res.json({
+        msg: 'User created',
+        user
+    });
 }
 
 const updateUser = async (req, res) => {
@@ -96,11 +56,6 @@ const updateUser = async (req, res) => {
 
     try {
         const user = await User.findByPk(id);
-        if (!user) {
-            return res.status(404).json({
-                msg: `User id: ${id} not found`
-            });
-        }
 
         await user.update({
             name,
@@ -123,27 +78,14 @@ const updateUser = async (req, res) => {
 
 const deleteUser = async (req, res) => {
     const { id } = req.params;
-    try {
-        const user = await User.findByPk(id);
-        if (!user) {
-            return res.status(404).json({
-                msg: `User id: ${id} not found`
-            });
-        }
+    const user = await User.findByPk(id);
 
-        user.update({ status: false });
+    user.update({ status: false });
 
-        res.json({
-            msg: 'User deleted',
-            user
-        });
-
-    } catch (error) {
-        res.status(500).json({
-            msg: 'Error',
-            error
-        });
-    }
+    res.json({
+        msg: 'User deleted',
+        user
+    });
 }
 
 module.exports = {
