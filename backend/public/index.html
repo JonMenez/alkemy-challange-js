@@ -3,13 +3,39 @@
 
 <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="./src//assets/icons/favicon.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Moniger - Better way to manage your expenses</title>
 </head>
 
 <body>
     <h1>Hello from backend</h1>
+    <br>
+
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+    <script>
+        function handleCredentialResponse(response) {
+            console.log("Encoded JWT ID token: " + response.credential);
+        }
+        window.onload = function () {
+            google.accounts.id.initialize({
+                client_id: "188844685764-patr35m3jsak13c1v249gaptaom8le7p.apps.googleusercontent.com",
+                callback: handleCredentialResponse,
+                text: 'continue_with'
+            });
+            google.accounts.id.renderButton(
+                document.getElementById("buttonDiv"),
+                { theme: "outline", size: "large" }  // customization attributes
+            );
+            google.accounts.id.prompt(); // also display the One Tap dialog
+        }
+    </script>
+    <div id="buttonDiv"></div>
+
+
+
+
+
 </body>
 
 </html>
