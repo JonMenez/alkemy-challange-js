@@ -17,6 +17,10 @@ const User = sequelize.define('user', {
     status: {
         type: DataTypes.BOOLEAN,
         defaultValue: true
+    },
+    google: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
 },
     {
