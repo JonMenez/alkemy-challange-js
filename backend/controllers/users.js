@@ -1,7 +1,6 @@
 const bcryptjs = require('bcryptjs');
 const User = require('../models/user');
 
-
 const getUsers = async (req, res) => {
 
     const users = await User.findAll({
@@ -14,7 +13,11 @@ const getUsers = async (req, res) => {
         ]
     });
 
-    const total = await User.count()
+    const total = await User.count({
+        where: {
+            status: true
+        }
+    })
 
     res.json({
         total,
