@@ -1,6 +1,7 @@
 const express = require('express');
-const usersRoutes = require('../routes/users');
 const authRoutes = require('../routes/auth');
+const usersRoutes = require('../routes/users');
+const recordsRoutes = require('../routes/records');
 const cors = require('cors');
 const db = require('../database/connection');
 
@@ -11,7 +12,8 @@ class Server {
         this.port = process.env.PORT || 3000;
         this.paths = {
             auth: '/api/v1/auth',
-            users: '/api/v1/users'
+            users: '/api/v1/users',
+            records: '/api/v1/records',
         }
 
         this.connectDB()
@@ -40,6 +42,7 @@ class Server {
     routes() {
         this.app.use(this.paths.auth, authRoutes);
         this.app.use(this.paths.users, usersRoutes);
+        this.app.use(this.paths.records, recordsRoutes);
     }
 
 
