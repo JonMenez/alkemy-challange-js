@@ -4,7 +4,6 @@ import '@styles/modal.scss'
 const Modal = ({ children, onClose }) => {
     return (
         <div
-            onClick={onClose}
             className='backdrop'>
             <div className="modal">
                 <div
