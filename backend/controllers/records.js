@@ -8,11 +8,15 @@ const getRecords = async (req, res) => {
         attributes: { exclude: 'status' },
         where: { status: true },
         order: [
-            ['id', 'ASC']
+            ['date', 'DESC']
         ]
     });
 
-    const total = await Record.count({ where: { status: true } });
+    const balance = await Record.sum('amount', {
+        where: { status: true }
+    });
+
+    const total = parseFloat(balance.toFixed(2));
 
     res.json({
         total,
@@ -30,8 +34,9 @@ const getRecordById = async (req, res) => {
 }
 
 const createRecord = async (req, res) => {
+    const userId = req.userId;
+    const { description, amount, date, category, is_income, user_id } = req.body;
 
-    const { description, amount, date, category, is_income } = req.body;
     const amounyFormatted = formatAmount(amount, is_income);
 
     const record = new Record({
@@ -39,10 +44,11 @@ const createRecord = async (req, res) => {
         amount: amounyFormatted,
         date,
         category,
-        is_income
+        is_income,
+        user_id: userId
     });
 
-    // await record.save();
+    await record.save();
 
     res.json({
         msg: 'Record created',
@@ -52,7 +58,8 @@ const createRecord = async (req, res) => {
             amount: record.amount,
             date: record.date,
             category: record.category,
-            is_income: record.is_income
+            is_income: record.is_income,
+            user_id: record.user_id
         }
     });
 }
