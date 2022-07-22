@@ -6,7 +6,7 @@ const Record = sequelize.define('record', {
         type: DataTypes.STRING,
     },
     amount: {
-        type: DataTypes.DECIMAL(10, 2),
+        type: DataTypes.FLOAT,
     },
     date: {
         type: DataTypes.DATEONLY
