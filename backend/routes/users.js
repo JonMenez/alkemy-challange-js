@@ -1,6 +1,6 @@
 const { Router } = require('express');
 const { check } = require('express-validator');
-const { validateInputs, validJWT, validID } = require('../middlewares/');
+const { validateInputs, validJWT, validID, validUserID } = require('../middlewares/');
 const { getUsers, getUserById, createUser, updateUser, deleteUser } = require('../controllers/users');
 const { existEmail } = require('../helpers/validateDB');
 
@@ -9,7 +9,7 @@ const router = Router();
 router.get('/', getUsers);
 
 router.get('/:id', [
-    validID,
+    validUserID,
 ], getUserById);
 
 router.post('/', [
@@ -21,6 +21,7 @@ router.post('/', [
 ], createUser);
 
 router.put('/:id', [
+    validUserID,
     check('name', 'Name is required').not().isEmpty(),
     check('email', 'Email is not valid').isEmail(),
     check('password', 'Password must be at least 6 characters long').isLength({ min: 6 }),
@@ -28,8 +29,7 @@ router.put('/:id', [
 ], updateUser);
 
 router.delete('/:id', [
-    validJWT,
-    validID,
+    validUserID,
     validateInputs
 ], deleteUser);
 
