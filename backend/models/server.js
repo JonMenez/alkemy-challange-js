@@ -1,8 +1,8 @@
 const express = require('express');
+const cors = require('cors');
 const authRoutes = require('../routes/auth');
 const usersRoutes = require('../routes/users');
 const recordsRoutes = require('../routes/records');
-const cors = require('cors');
 const db = require('../database/connection');
 
 
@@ -23,10 +23,11 @@ class Server {
 
     async connectDB() {
         try {
-            await db.authenticate();
+            await db.sync({ alter: true });
             console.log('Database connected');
         } catch (error) {
-            throw new Error(error);
+            console.log(error);
+            console.log('It could not connect to the database');
         }
     }
 
