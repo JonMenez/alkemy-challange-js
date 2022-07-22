@@ -1,5 +1,6 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/connection');
+const Record = require('../models/record');
 
 const User = sequelize.define('user', {
     name: {
@@ -8,7 +9,8 @@ const User = sequelize.define('user', {
     },
     email: {
         type: DataTypes.STRING,
-        allowNull: false
+        allowNull: false,
+        unique: true
     },
     password: {
         type: DataTypes.STRING,
@@ -26,6 +28,18 @@ const User = sequelize.define('user', {
     {
         timestamps: false
     }
+);
+
+//Associations
+User.hasMany(Record, {
+    foreignKey: 'user_id',
+    as: 'records'
+});
+
+Record.belongsTo(User, {
+    foreignKey: 'user_id',
+    as: 'user'
+}
 );
 
 module.exports = User;
