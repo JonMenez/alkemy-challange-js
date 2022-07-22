@@ -10,7 +10,9 @@ const validJWT = (req, res, next) => {
     }
 
     try {
-        jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+        const { aid } = jwt.verify(token, process.env.SECRETORPRIVATEKEY);
+
+        req.userId = aid;
 
         next();
     }
