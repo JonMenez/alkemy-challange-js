@@ -12,13 +12,6 @@ const login = async (req, res) => {
             where: { email }
         });
 
-        //Verify if user exists
-        if (!user) {
-            return res.status(400).json({
-                msg: 'User not found'
-            });
-        }
-
         //Verify is user is active
         if (!user.status) {
             return response.status(400).json({
@@ -40,13 +33,14 @@ const login = async (req, res) => {
 
         res.json({
             msg: 'Login successful',
-            token
+            token,
+            user
         })
 
 
     } catch (error) {
         res.status(500).json({
-            msg: 'Server error'
+            msg: 'invalid email or password'
         });
     }
 }
@@ -68,7 +62,7 @@ const googleSignIn = async (req, res) => {
                 password: ':P',
                 google: true
             }
-            console.log(data);
+
             user = await User.create(data);
             // await user.save();
         }
@@ -85,7 +79,8 @@ const googleSignIn = async (req, res) => {
 
         res.json({
             msg: 'Login successful',
-            token
+            token,
+            user
         })
 
     } catch (error) {
