@@ -1,5 +1,6 @@
 const bcryptjs = require('bcryptjs');
 const User = require('../models/user');
+const Record = require('../models/record');
 
 const getUsers = async (req, res) => {
 
@@ -8,9 +9,7 @@ const getUsers = async (req, res) => {
         where: {
             status: true
         },
-        order: [
-            ['id', 'ASC']
-        ]
+        include: ['records'],
     });
 
     const total = await User.count({
@@ -30,7 +29,19 @@ const getUserById = async (req, res) => {
     const { id } = req.params;
     const user = await User.findByPk(id);
 
-    res.json(user);
+    const balance = await Record.sum('amount', {
+        where: {
+            user_id: id,
+            status: true
+        }
+    });
+
+    const total = parseFloat(balance.toFixed(2));
+
+    res.json({
+        user,
+        balance: total
+    });
 
 }
 
@@ -72,10 +83,12 @@ const updateUser = async (req, res) => {
         });
 
     } catch (error) {
-        res.status(500).json({
-            msg: 'Error',
-            error
-        });
+        res.status(500).json(
+            console.log(error),
+            {
+                msg: 'User not updated'
+            }
+        );
     }
 }
 
