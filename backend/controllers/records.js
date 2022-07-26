@@ -4,19 +4,22 @@ const { formatAmount } = require('../helpers/formatAmount');
 
 const getRecords = async (req, res) => {
 
+    const { userId } = req.query
+
     const record = await Record.findAll({
         attributes: { exclude: 'status' },
-        where: { status: true },
+        where: {
+            status: true,
+            user_id: userId ? userId : null
+        },
         order: [
             ['date', 'DESC']
         ]
     });
 
-    const balance = await Record.sum('amount', {
+    const total = await Record.count({
         where: { status: true }
     });
-
-    const total = parseFloat(balance.toFixed(2));
 
     res.json({
         total,
@@ -35,7 +38,7 @@ const getRecordById = async (req, res) => {
 
 const createRecord = async (req, res) => {
     const userId = req.userId;
-    const { description, amount, date, category, is_income, user_id } = req.body;
+    const { description, amount, date, category, is_income } = req.body;
 
     const amounyFormatted = formatAmount(amount, is_income);
 
