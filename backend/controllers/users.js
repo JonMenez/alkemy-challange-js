@@ -5,9 +5,9 @@ const Record = require('../models/record');
 const getUsers = async (req, res) => {
 
     const users = await User.findAll({
-        attributes: ['id', 'name', 'email'],
+        attributes: { exclude: ['status', 'password', 'google'] },
         where: {
-            status: true
+            status: true,
         },
         include: ['records'],
     });
@@ -27,7 +27,13 @@ const getUsers = async (req, res) => {
 const getUserById = async (req, res) => {
 
     const { id } = req.params;
-    const user = await User.findByPk(id);
+    const user = await User.findOne({
+        attributes: { exclude: ['status', 'password', 'google'] },
+        where: {
+            id,
+        },
+        include: ['records'],
+    });
 
     const balance = await Record.sum('amount', {
         where: {
@@ -39,8 +45,8 @@ const getUserById = async (req, res) => {
     const total = parseFloat(balance.toFixed(2));
 
     res.json({
+        balance: total,
         user,
-        balance: total
     });
 
 }
