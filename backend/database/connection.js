@@ -5,7 +5,7 @@ const database = new Sequelize(
     'postgres',
     process.env.DB_PASSWORD,
     {
-        host: 'localhost',
+        host: 'https://alkemy-challange-js-production.up.railway.app',
         dialect: 'postgres',
     });
 
