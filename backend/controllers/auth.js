@@ -63,7 +63,7 @@ const googleSignIn = async (req, res) => {
             const data = {
                 name,
                 email,
-                password: ':P',
+                password: 'google sign in password',
                 google: true
             }
 
