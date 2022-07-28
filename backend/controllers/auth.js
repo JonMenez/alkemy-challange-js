@@ -84,9 +84,13 @@ const googleSignIn = async (req, res) => {
         const token = await generateToken(user.id);
 
         res.json({
-            msg: 'Login successful',
+            msg: 'Login successfully',
             token,
-            user
+            user: {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+            }
         })
 
     } catch (error) {
