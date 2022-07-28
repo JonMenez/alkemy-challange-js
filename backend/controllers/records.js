@@ -36,6 +36,25 @@ const getRecordById = async (req, res) => {
 
 }
 
+const getRecordsByUserId = async (req, res) => {
+
+    const userId = req.userId;
+    const records = await Record.findAll({
+        attributes: { exclude: 'status' },
+        where: {
+            status: true,
+            user_id: userId
+        },
+        order: [
+            ['date', 'DESC']
+        ]
+    });
+
+    res.json({
+        records
+    });
+}
+
 const createRecord = async (req, res) => {
     const userId = req.userId;
     const { description, amount, date, category, is_income } = req.body;
@@ -112,6 +131,7 @@ const deleteRecord = async (req, res) => {
 module.exports = {
     getRecords,
     getRecordById,
+    getRecordsByUserId,
     createRecord,
     updateRecord,
     deleteRecord
