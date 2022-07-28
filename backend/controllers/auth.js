@@ -32,9 +32,13 @@ const login = async (req, res) => {
         const token = await generateToken(user.id);
 
         res.json({
-            msg: 'Login successful',
+            msg: 'Login successfully',
             token,
-            user
+            user: {
+                id: user.id,
+                name: user.name,
+                email: user.email,
+            }
         })
 
 
@@ -64,7 +68,9 @@ const googleSignIn = async (req, res) => {
             }
 
             user = await User.create(data);
-            // await user.save();
+
+            //Save user to database
+            await user.save();
         }
 
         //Verify if user is active
