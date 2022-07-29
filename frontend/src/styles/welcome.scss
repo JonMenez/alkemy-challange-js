@@ -6,6 +6,12 @@
     display: flex;
     place-content: center;
     background-color: $color-primary;
+    
+    a {
+        max-width: 250px;
+        margin: 0 auto;
+        margin-bottom: 1rem;
+    }
 
     &-container {
         width: 70%;
@@ -36,15 +42,12 @@
     }
 
     &-button-primary {
-        width: 80%;
-        max-width: 250px;
+        width: 100%;
         color: $color-primary;
         background-color: $color-white;
         margin-bottom: .5rem;
         box-shadow: 0px 1px 0px $color-secondary;
         box-shadow: none;
-        margin: 0 auto;
-        margin-bottom: 1rem;
 
         &:hover {
             background-color: darken($color-white, 5%);
