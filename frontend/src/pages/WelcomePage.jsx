@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Button from "@components/Button"
 import googleSVG from "@icons/google.svg"
 import '@styles/welcome.scss'
@@ -9,8 +10,12 @@ const WelcomePage = () => {
                 <h1 className="welcome-logo">Moniger</h1>
                 <p className="welcome-text">Better way to manage <span>your expenses</span></p>
                 <div>
-                    <Button title="Sign Up" classButton="welcome-button-primary" />
-                    <Button title="Login" classButton="welcome-button-secondary" />
+                    <Link to='register'>
+                        <Button title="Sign Up" classButton="welcome-button-primary" />
+                    </Link>
+                    <Link to='login'>
+                        <Button title="Login" classButton="welcome-button-secondary" />
+                    </Link>
                 </div>
                 <p className="welcome-optional">or</p>
                 <button className="welcome-google">

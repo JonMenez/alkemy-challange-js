@@ -1,4 +1,5 @@
 import { useRef } from "react"
+import { Link } from "react-router-dom"
 import Input from "@components/Input"
 import ArrowBack from "@components/ArrowBack"
 import Button from "../components/Button"
@@ -53,7 +54,7 @@ const RegisterPage = () => {
                     classButton='login-button'
                     title='Sign Up Now!' />
             </form>
-            <p className="login-question">Already have an account?<span><a className="login-sign-up" href="#">Login</a></span> </p>
+            <p className="login-question">Already have an account?<span><Link className="login-sign-up" to="/login">Login</Link></span> </p>
         </section>
     )
 }
