@@ -4,13 +4,10 @@ const { formatAmount } = require('../helpers/formatAmount');
 
 const getRecords = async (req, res) => {
 
-    const { userId } = req.query
-
-    const record = await Record.findAll({
+    const records = await Record.findAll({
         attributes: { exclude: 'status' },
         where: {
-            status: true,
-            user_id: userId ? userId : null
+            status: true
         },
         order: [
             ['date', 'DESC']
@@ -23,7 +20,7 @@ const getRecords = async (req, res) => {
 
     res.json({
         total,
-        record
+        records
     });
 }
 
