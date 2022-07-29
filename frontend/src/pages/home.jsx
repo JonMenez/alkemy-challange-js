@@ -1,8 +1,8 @@
 import { NavLink } from 'react-router-dom'
 import CardBalance from '@components/CardBalance'
 import Transactions from '@containers/Transactions'
+import CardTransaction from '@components/CardTransaction'
 import '@styles/home.scss'
-import CardTransaction from '../components/CardTransaction'
 
 const Home = () => {
     return (
